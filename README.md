@@ -31,6 +31,15 @@ uvicorn main:app --reload
 
 This will start the server on `http://127.0.0.1:8000`.
 
+## API Documentation
+
+To explore the available endpoints, you can visit the automatically generated API documentation provided by FastAPI. Once the server is running, open your browser and navigate to:
+
+- Swagger UI: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+- ReDoc: [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)
+
+These interfaces will allow you to interact with the API and view the available endpoints and their details.
+
 ## Project Structure
 
 ```

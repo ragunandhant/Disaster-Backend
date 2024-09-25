@@ -34,13 +34,23 @@ This will start the server on `http://127.0.0.1:8000`.
 ## Project Structure
 
 ```
-/Disaster-backend
-├── app
+/Disaster-backend/
+├── app/
 │   ├── main.py
-│   ├── ...
+│   ├── model/
+│   │   ├── __init__.py
+│   │   └── ...  # Model files
+│   ├── utils/
+│   │   ├── __init__.py
+│   │   └── ...  # Utility functions
+│   ├── router/
+│   │   ├── __init__.py
+│   │   └── ...  # Router files
 ├── requirements.txt
 ├── README.md
 └── .env
+
+
 ```
 
 ## License

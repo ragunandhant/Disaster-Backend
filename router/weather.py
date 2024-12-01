@@ -62,7 +62,39 @@ async def post_weather_data(data: WeatherDataRequest):
         prediction = model.predict(input_data)
         print(prediction)
         
-        label = encoder.inverse_transform([prediction])[0][0]
+        label = encoder.inverse_transform([prediction])[0][0
+        ]
         return label
+    except Exception as e:
+        print(e)
+        return {"error": str(e)}
+
+
+class LandslideRiskRequest(BaseModel):
+    Temperature: float
+    Humidity: float
+    Precipitation: float
+    Soil_Moisture: float
+    Elevation: float
+
+@router.post("/landslide_predict")
+async def post_landslide_risk(data: LandslideRiskRequest):
+    try:
+        import  os
+        
+        reverse_map ={0: 'Low', 1: 'Moderate', 2: 'High', 3: 'Very High'}
+        # Load the model from the ml_model folder
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        model = joblib.load(os.path.join(f"{current_dir}/landslide_risk_model.pkl"))
+
+        # Prepare the data for prediction
+        input_data = [[
+            data.Temperature, data.Humidity, data.Precipitation,
+            data.Soil_Moisture, data.Elevation
+        ]]
+        
+        prediction = model.predict(input_data)
+        
+        return {"landslide_risk": reverse_map[prediction[0]]}
     except Exception as e:
         return {"error": str(e)}
